@@ -4,25 +4,25 @@ const cors = require('cors');
 const path = require('path');
 
 const app = express();
-const port = 3000;
+const port = 3091;
 
 // Database configuration
 const pool = new Pool({
     user: 'postgres',
-    host: 'localhost',
+    host: 'postgres',
     database: 'new_employee_db',
-    password: 'Password@12345',
+    password: 'admin834',
     port: 5432,
 });
 
 // Middleware
 app.use(cors({
-    origin: ['http://localhost:3000', 
+    origin: ['http://44.203.74.159:3091', 
         'http://127.0.0.1:5500',
-         'http://localhost:5500',
+         'http://44.203.74.159:8142',
          'http://127.0.0.1:5502',
          'http://127.0.0.1:5503',
-          'http://localhost:3001'],
+          'http://44.203.74.159:8143'],
     methods: ['GET', 'POST', 'PUT', 'OPTIONS'],
     allowedHeaders: ['Content-Type'],
 }));
@@ -184,9 +184,9 @@ app.use((err, req, res, next) => {
 // Start server
 testDatabaseConnection().then(() => {
     app.listen(port, '0.0.0.0', () => {
-        console.log(`Server running on http://localhost:${port}`);
-        console.log(`Employee Dashboard: http://localhost:${port}/`);
-        console.log(`HR Dashboard: http://localhost:${port}/hr`);
+        console.log(`Server running on http://44.203.74.159:${port}`);
+        console.log(`Employee Dashboard: http://44.203.74.159:${port}/`);
+        console.log(`HR Dashboard: http://44.203.74.159:${port}/hr`);
     });
 }).catch(err => {
     console.error('Failed to start server:', err.message);
